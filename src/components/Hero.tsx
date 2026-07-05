@@ -42,7 +42,7 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       // GSAP ScrollTrigger for text fade out on scroll
       gsap.to(textRef.current, {
-        opacity: 0,
+        opacity: 1,
         y: -100,
         scrollTrigger: {
           trigger: containerRef.current,
@@ -70,9 +70,9 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full h-full pt-10 lg:pt-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-12 items-center h-full pb-10">
           {/* Left Content */}
-          <div ref={textRef} className="flex flex-col items-start text-left max-w-2xl relative z-20 pb-20 lg:pb-0">
+          <div ref={textRef} className="flex flex-col items-start text-left max-w-2xl relative z-20 pb-0 lg:pb-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl sm:text-7xl lg:text-8xl font-bold font-display leading-[1.05] text-[#111] mb-6 tracking-tight"
+              className="text-6xl sm:text-7xl lg:text-8xl font-bold font-display leading-[1.05] text-[#111] mb-6 tracking-tight"
             >
                Pure by Nature, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-indigo-600">
@@ -99,7 +99,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg sm:text-xl text-gray-500 mb-10 max-w-lg leading-relaxed font-light"
+              className="text-xl sm:text-xl text-gray-500 mb-10 max-w-lg leading-relaxed font-light"
             >
               Premium packaged drinking water sourced and purified to deliver freshness, safety, and uncompromising quality in every drop.
             </motion.p>
@@ -112,7 +112,7 @@ export default function Hero() {
             >
               <a
                 href="#products"
-                className="flex items-center gap-3 bg-[#111] hover:bg-black text-white px-8 py-4 rounded-full text-base font-medium transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 group"
+                className="flex items-center gap-3 bg-black hover:bg-black text-white px-8 py-4 rounded-full text-base font-medium transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 group"
               >
                 Order Now
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -127,7 +127,7 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Cinematic Apple-style 3D Stage */}
-          <div className="relative h-[500px] lg:h-[800px] w-full flex justify-center items-center">
+          <div className="relative h-[500px] lg:h-[800px] w-full flex justify-center items-center ">
             {/* Glassmorphism Container Frame */}
             <motion.div 
               style={{ x: splashX, y: splashY }}
