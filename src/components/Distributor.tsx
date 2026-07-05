@@ -122,7 +122,7 @@ export default function Distributor() {
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 src="https://res.cloudinary.com/dmnmpn69n/image/upload/v1783179204/ChatGPT_Image_Jul_4_2026_08_54_01_PM_fzrc9m.png" 
                 alt="Business partnership with Amarkantak Minerals" 
-                className="object-cover w-full h-full z-20"
+                className="object-cover w-full h-full z-20 scale-120"
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none z-10"></div>
             </div>
