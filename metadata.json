@@ -1,0 +1,6 @@
+{
+  "name": "Amarkantak Minerals",
+  "description": "Premium Packaged Drinking Water",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
