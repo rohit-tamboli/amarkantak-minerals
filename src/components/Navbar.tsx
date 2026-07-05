@@ -33,7 +33,7 @@
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 z-50">
               <Droplets className="w-8 h-8 text-primary" />
-              <span className="font-display font-bold text-2xl tracking-tight text-dark">
+              <span className="font-display font-bold text-xl lg:text-2xl tracking-tight text-dark">
                 Amarkantak <span className="text-primary">Minerals</span>
               </span>
             </a>
