@@ -18,7 +18,7 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Pure by Nature, Perfect for Life. Delivering premium packaged drinking water with uncompromising quality standards.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-6">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-gray-300 hover:text-white">
                 <Facebook className="w-5 h-5" />
               </a>
@@ -31,6 +31,11 @@ export default function Footer() {
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-gray-300 hover:text-white">
                 <Linkedin className="w-5 h-5" />
               </a>
+            </div>
+            
+            <div className="text-gray-400 text-sm space-y-1">
+              <p><span className="text-white/80 font-medium">Trade Name:</span> SHEETLA PRODUCTS INDUSTRIES</p>
+              <p><span className="text-white/80 font-medium">GSTIN:</span> 22BJRPS8157D1ZU</p>
             </div>
           </div>
 
