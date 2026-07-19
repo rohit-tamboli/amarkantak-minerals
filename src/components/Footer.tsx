@@ -93,7 +93,7 @@ export default function Footer() {
             Made with <span className="text-primary">♥</span> in India
           </p>
         </div>
-      </div>
+      </div> 
     </footer>
   );
 }
