@@ -105,9 +105,9 @@ export default function Contact() {
                 },
                 {
                   icon: Mail,
-                  text: "info@amarkantakminerals.com",
+                  text: "sheetalawater@gmail.com",
                   label: "Email",
-                  href: "mailto:info@amarkantakminerals.com",
+                  href: "mailto:sheetalawater@gmail.com",
                 },
                 {
                   icon: MapPin,
