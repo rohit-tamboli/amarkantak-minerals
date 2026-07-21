@@ -4,56 +4,62 @@ import { useState } from "react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-  name: "",
-  mobile: "",
-  email: "",
-  city: "",
-  interest: "Bulk Order",
-  message: "",
-});
+    name: "",
+    mobile: "",
+    email: "",
+    city: "",
+    interest: "Bulk Order",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value,
-  });
-};
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbxbgwG8qvm3S0ZbQWbe7CN9VJ6yz3PejXtw7q4LF_yFdXre_9bpGzeplUTFLK3DvkRzsQ/exec",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        body: JSON.stringify(formData),
+    setLoading(true); 
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxbgwG8qvm3S0ZbQWbe7CN9VJ6yz3PejXtw7q4LF_yFdXre_9bpGzeplUTFLK3DvkRzsQ/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const text = await response.text();
+      const result = JSON.parse(text);
+
+      if (result.success) {
+        alert("Inquiry Sent Successfully");
+
+        setFormData({
+          name: "",
+          mobile: "",
+          email: "",
+          city: "",
+          interest: "Bulk Order",
+          message: "",
+        });
       }
-    );
-
-    const text = await response.text();
-const result = JSON.parse(text);
-
-    if (result.success) {
-      alert("Inquiry Sent Successfully");
-
-      setFormData({
-        name: "",
-        mobile: "",
-        email: "",
-        city: "",
-        interest: "Bulk Order",
-        message: "",
-      });
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.log(error);
-    alert("Something went wrong");
-  }
-};
+  };
 
   return (
     <section id="contact" className="py-24 bg-light relative">
@@ -182,10 +188,10 @@ const result = JSON.parse(text);
                     Mobile Number
                   </label>
                   <input
-                     type="tel"
-  name="mobile"
-  value={formData.mobile}
-  onChange={handleChange}
+                    type="tel"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-gray-50 focus:bg-white"
                     placeholder="+91 00000 00000"
                   />
@@ -197,10 +203,10 @@ const result = JSON.parse(text);
                   Email
                 </label>
                 <input
-                   type="email"
-  name="email"
-  value={formData.email}
-  onChange={handleChange}
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-gray-50 focus:bg-white"
                   placeholder="john@example.com"
                 />
@@ -212,10 +218,10 @@ const result = JSON.parse(text);
                     City
                   </label>
                   <input
-                     type="text"
-  name="city"
-  value={formData.city}
-  onChange={handleChange}
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-gray-50 focus:bg-white"
                     placeholder="Mumbai"
                   />
@@ -224,9 +230,12 @@ const result = JSON.parse(text);
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Interest
                   </label>
-                  <select   name="interest"
-  value={formData.interest}
-  onChange={handleChange} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-gray-50 focus:bg-white text-gray-600">
+                  <select
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-gray-50 focus:bg-white text-gray-600"
+                  >
                     <option>Bulk Order</option>
                     <option>Distributorship</option>
                     <option>General Inquiry</option>
@@ -239,10 +248,10 @@ const result = JSON.parse(text);
                   Message
                 </label>
                 <textarea
-                   rows={4}
-  name="message"
-  value={formData.message}
-  onChange={handleChange}
+                  rows={4}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors bg-gray-50 focus:bg-white resize-none"
                   placeholder="How can we help you?"
                 ></textarea>
@@ -250,10 +259,44 @@ const result = JSON.parse(text);
 
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary-light text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-primary/30 cursor-pointer"
+                disabled={loading}
+                className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold transition-all
+    ${
+      loading
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-primary hover:bg-primary-light text-white shadow-lg hover:shadow-primary/30"
+    }`}
               >
-                Send Inquiry
-                <Send className="w-5 h-5" />
+                {loading ? (
+                  <>
+                    <svg
+                      className="w-5 h-5 animate-spin"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      />
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Inquiry
+                    <Send className="w-5 h-5" />
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
