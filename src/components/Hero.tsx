@@ -104,14 +104,14 @@ export default function Hero() {
               Premium packaged drinking water sourced and purified to deliver freshness, safety, and uncompromising quality in every drop.
             </motion.p>
 
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap items-center gap-5"
             >
               <a
-                href="#products"
+                href="#contact"
                 className="flex items-center gap-3 bg-black hover:bg-black text-white px-8 py-4 rounded-full text-base font-medium transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] hover:-translate-y-1 group"
               >
                 Order Now
